@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import { actionCreators } from "../../reducer";
 import MuteButton from "../Navigation/SettingNavigation";
 
 

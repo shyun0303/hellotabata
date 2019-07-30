@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { TouchableOpacity } from "react-native";
-import {LinearGradient} from "expo" 
+import {LinearGradient} from "expo-linear-gradient" 
 
 const View = styled.View`
     justify-content: flex-start;

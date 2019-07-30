@@ -43,13 +43,13 @@ export const hellMusicRepyla = async()=>{
 }
 export const hellMusicMute = async()=>{
    try{
-      await hellMusic.setVolumeAsync({isMuted:true})      
+      await hellMusic.setStatusAsync({isMuted:true})      
    }catch{
    }
 }
 export const hellMusicunMute = async()=>{
    try{
-    await hellMusic.setVolumeAsync({voloume:1.0})     
+    await hellMusic.setStatusAsync({isMuted:false})     
    }catch{
    }
 }

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { View, StyleSheet, Text, StatusBar, BackHandler } from "react-native";
-import Button from "../Button";
+import Button, { Button_2 } from "../Button";
 import {TIMER_DURATION} from  "../../reducer";
 import { hellMusic, hellMusicPlay, hellMusicStop, hellMusicPause, hellMusicRepyla, hellMusicLoad, hellMusicMute, hellMusicunMute } from "../Audio/audio";
 
@@ -72,7 +72,7 @@ class Timer extends Component {
     if(nextProps.isMuted==true){
       hellMusicMute()
     }else if(nextProps.isMuted==false){
-     
+      hellMusicunMute()
     }
     /*--------------------------------------------------*/
     if (!currentProps.isPlaying && nextProps.isPlaying) {
@@ -118,6 +118,8 @@ class Timer extends Component {
     return (
       <View style={[styles.container, {backgroundColor: this.state.currentColor}]}>
         <StatusBar barStyle="light-content" />
+      {!isMuted && (<Button_2 iconName={"volume-strike"} onPress={muteMusic} />)} 
+      {isMuted && (<Button_2 iconName={"volume"} onPress={unmuteMusic} />)}
         <View style={styles.upper}>
           <Text style={styles.time}>
             {formatTime(timerDuration - elapsedTime)}
@@ -139,8 +141,6 @@ class Timer extends Component {
           {!isPlaying && isPaused && (
             <Button  iconName={"play-circle"} onPress={reTimer} />
           )} 
-          {!isMuted && (<Button iconName={"volume-off"} onPress={muteMusic} />)} 
-          {isMuted && (<Button iconName={"volume-up"} onPress={unmuteMusic} />)}
                 
         </View>
       </View>
@@ -180,7 +180,8 @@ const styles = StyleSheet.create({
     fontSize: 100,
     fontWeight: "100",
     alignItems:"center"
-  }
+  },
+
 });
 
 export default Timer;

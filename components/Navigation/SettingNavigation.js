@@ -1,7 +1,7 @@
 import React,{Component} from "react";
 import styled from "styled-components";
 import { TouchableOpacity,StyleSheet } from "react-native";
-import {LinearGradient} from "expo" 
+import {LinearGradient} from "expo-linear-gradient" 
 import Button from "../Button";
 import { initialState } from "../../reducer";
 
