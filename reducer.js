@@ -6,6 +6,8 @@ const RESTART_TIMER = "RESTART_TIMER";
 const ADD_SECOND = "ADD_SECOND";
 const PAUSE_TIMER = "PAUSE_TIMER";
 const RE_TIMER ="RE_TIMER";
+const MUTE_MUSIC = "MUTE_MUSIC";
+const UNMUTE_MUSIC = "UNMUTE_MUSIC";
 // Action Creators
 
 function startTimer() {
@@ -35,15 +37,26 @@ function pauseTimer(){
     type : PAUSE_TIMER
   }
 }
+function muteMusic(){
+  return{
+    type: MUTE_MUSIC
+  }
+}
+function unmuteMusic(){
+  return{
+    type: UNMUTE_MUSIC
+  }
+}
 
 // Reducer
 
 export const TIMER_DURATION = 250;
 
-const initialState = {
+export const initialState = {
   isPlaying: false,
   isPaused : false,
   isRestart: false,
+  isMuted:false,
   elapsedTime: 0,
   timerDuration: TIMER_DURATION
 };
@@ -60,6 +73,10 @@ function reducer(state = initialState, action) {
       return applyPauseTimer(state,action);
     case RE_TIMER:
       return applyReTimer(state,action);
+    case MUTE_MUSIC:
+      return applyMuteMusic(state,action);
+    case UNMUTE_MUSIC:
+      return applyUnMuteMusic(state,action);
     default:
       return state;
   }
@@ -71,7 +88,7 @@ function applyReTimer(state,action){
     ...state,
     isPlaying:true,
     isPaused:false,
-    isRestart:true
+    isRestart:true,
   }
 }
 function applyPauseTimer(state, action){
@@ -101,6 +118,19 @@ function applyRestartTimer(state, action) {
     elapsedTime: 0
   };
 }
+function applyMuteMusic(state,action){
+  return{
+    ...state,
+    isMuted: true
+  }
+}
+function applyUnMuteMusic(state,action){
+  return{
+    ...state,
+    isMuted: false
+  }
+}
+
 
 function applyAddSecond(state, action) {
   const { elapsedTime } = state;
@@ -124,7 +154,9 @@ const actionCreators = {
   restartTimer,
   addSecond,
   pauseTimer,
-  reTimer
+  reTimer,
+  muteMusic,
+  unmuteMusic
 };
 export { actionCreators };
 

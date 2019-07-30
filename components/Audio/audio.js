@@ -1,5 +1,6 @@
 import { Audio } from 'expo-av';
 import { Randomnumber } from './randomlist';
+import { initialState } from '../../reducer';
 
 
 const hellMusic = new Audio.Sound();
@@ -40,4 +41,15 @@ export const hellMusicRepyla = async()=>{
       
    }
 }
-
+export const hellMusicMute = async()=>{
+   try{
+      await hellMusic.setVolumeAsync({isMuted:true})      
+   }catch{
+   }
+}
+export const hellMusicunMute = async()=>{
+   try{
+    await hellMusic.setVolumeAsync({voloume:1.0})     
+   }catch{
+   }
+}

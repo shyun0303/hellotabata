@@ -4,13 +4,14 @@ import { actionCreators } from "../../reducer";
 import Timer from "./presenter";
 
 function mapStateToProps(state) {
-  const { isPlaying,isPaused, elapsedTime, timerDuration,isRestart } = state;
+  const { isPlaying,isPaused, elapsedTime, timerDuration,isRestart,isMuted } = state;
   return {
     isPlaying,
     isPaused,
     elapsedTime,
     timerDuration,
-    isRestart
+    isRestart,
+    isMuted
   };
 }
 
@@ -20,7 +21,9 @@ function mapDispatchToProps(dispatch) {
     restartTimer: bindActionCreators(actionCreators.restartTimer, dispatch),
     addSecond: bindActionCreators(actionCreators.addSecond, dispatch),
     pauseTimer: bindActionCreators(actionCreators.pauseTimer, dispatch),
-    reTimer : bindActionCreators(actionCreators.reTimer,dispatch)
+    reTimer : bindActionCreators(actionCreators.reTimer,dispatch),
+    muteMusic: bindActionCreators(actionCreators.muteMusic, dispatch),
+    unmuteMusic: bindActionCreators(actionCreators.unmuteMusic, dispatch)
   };
 }
 

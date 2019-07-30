@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import { TouchableOpacity } from "react-native";
+import {LinearGradient} from "expo" 
 
 const View = styled.View`
   justify-content: center;
   align-items: center;
   flex: 1;
-  background-color: #5e7e9b;
 
 `;
 
@@ -20,9 +20,11 @@ const Text = styled.Text`
 `;
 
 export default ({ navigation }) => (
+  <LinearGradient colors={["#F7FFF3","#2ABDEB"]} style={{flex:1}}>
   <View>
     <TouchableOpacity onPress={() => navigation.navigate("TimerPresenter")}>
         <Text>시작 하기</Text>
     </TouchableOpacity>
   </View>
+  </LinearGradient>
 );

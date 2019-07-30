@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { View, StyleSheet, Text, StatusBar, BackHandler } from "react-native";
 import Button from "../Button";
 import {TIMER_DURATION} from  "../../reducer";
-import { hellMusicPlay, hellMusicStop, hellMusicPause, hellMusicRepyla, hellMusicLoad } from "../Audio/audio";
+import { hellMusic, hellMusicPlay, hellMusicStop, hellMusicPause, hellMusicRepyla, hellMusicLoad, hellMusicMute, hellMusicunMute } from "../Audio/audio";
 
 
 
@@ -49,7 +49,8 @@ class Timer extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-   BackHandler.addEventListener('hardwareBackPress',()=>{
+   
+    BackHandler.addEventListener('hardwareBackPress',()=>{
   {
      hellMusicStop() 
   }
@@ -58,7 +59,7 @@ class Timer extends Component {
 )
     const currentProps = this.props;
     
-    
+ /* play music */
     if(nextProps.isRestart&&nextProps.isPlaying&&!nextProps.isPaused){
       hellMusicRepyla()
     }else if(!nextProps.isRestart&&!nextProps.isPlaying&&nextProps.isPaused){
@@ -68,8 +69,12 @@ class Timer extends Component {
     }else if(!nextProps.isRestart&&!nextProps.isPlaying&&!nextProps.isPaused){
       hellMusicStop()
     }
-
-    
+    if(nextProps.isMuted==true){
+      hellMusicMute()
+    }else if(nextProps.isMuted==false){
+     
+    }
+    /*--------------------------------------------------*/
     if (!currentProps.isPlaying && nextProps.isPlaying) {
       const timerInterval = setInterval(() => {
         currentProps.addSecond();
@@ -103,7 +108,10 @@ class Timer extends Component {
       pauseTimer,
       reTimer,
       isPaused,
-      isRestart 
+      isRestart,
+      isMuted,
+      muteMusic,
+      unmuteMusic 
     } = this.props;
 
        
@@ -130,7 +138,10 @@ class Timer extends Component {
           )}
           {!isPlaying && isPaused && (
             <Button  iconName={"play-circle"} onPress={reTimer} />
-          )}
+          )} 
+          {!isMuted && (<Button iconName={"volume-off"} onPress={muteMusic} />)} 
+          {isMuted && (<Button iconName={"volume-up"} onPress={unmuteMusic} />)}
+                
         </View>
       </View>
     );

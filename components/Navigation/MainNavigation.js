@@ -1,14 +1,16 @@
 import {createStackNavigator, createAppContainer} from "react-navigation";
-import TimerPresenter from "../../TimerPresenter";
+import TimerPresenter from "./NavigationPresenter/TimerPresenter";
 import TimerNavigation from "./TimerNavigation"
+import exampleNavigation from "./exampleNavigation";
+import SettingNavigation from "./SettingNavigation";
 
 
 const MainNavigation = createStackNavigator({
+    exampleNavigation,
     TimerNavigation,
-    
-    TimerPresenter
+    TimerPresenter,
+    SettingNavigation
 },{
-    headerMode:"none",
-    mode:"modal"
+    headerMode:"none"
 })
 export default createAppContainer(MainNavigation)
