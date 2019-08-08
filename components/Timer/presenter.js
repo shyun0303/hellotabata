@@ -42,7 +42,6 @@ export const mainTime = (time) =>{
 }
 }
 
-
 class Timer extends Component {
   state = {
     currentColor : "#29ABE1"
@@ -51,8 +50,12 @@ class Timer extends Component {
   componentWillReceiveProps(nextProps) {
    
     BackHandler.addEventListener('hardwareBackPress',()=>{
-  {
-     hellMusicStop() 
+  {   
+    this.props.isPlaying=false;
+    this.props.isPaused=false;
+    this.props.isRestart=false;
+    clearInterval(this.state.interval);
+    hellMusicStop() 
   }
   return 
   } 
@@ -74,7 +77,7 @@ class Timer extends Component {
     }else if(nextProps.isMuted==false){
       hellMusicunMute()
     }
-    /*--------------------------------------------------*/
+ /*--------------------------------------------------*/
     if (!currentProps.isPlaying && nextProps.isPlaying) {
       const timerInterval = setInterval(() => {
         currentProps.addSecond();
@@ -89,17 +92,20 @@ class Timer extends Component {
      
      }
   }
+  /*------------add second -----------------*/
   render() {
+
     hellMusicLoad()
     if((this.props.timerDuration-this.props.elapsedTime)%30==0){
       this.state.currentColor="#CE0B24"
     }
- 
+    
     if((this.props.timerDuration-this.props.elapsedTime)%30==10){
       this.state.currentColor="#29ABE1"
     }
+    console.log(this.props._1round,this.props._2round,this.props._3round,this.props._4round,this.props._5round,this.props._6round,this.props._7round,this.props._8round)
     
-   const {
+    const {
       isPlaying,
       elapsedTime,
       timerDuration,
@@ -111,11 +117,13 @@ class Timer extends Component {
       isRestart,
       isMuted,
       muteMusic,
-      unmuteMusic 
+      unmuteMusic,
+      _1round,_2round,_3round,_4round,_5round,_6round,_7round,_8round,
     } = this.props;
-
+    
        
     return (
+   
       <View style={[styles.container, {backgroundColor: this.state.currentColor}]}>
         <StatusBar barStyle="light-content" />
       {!isMuted && (<Button_2 iconName={"volume-strike"} onPress={muteMusic} />)} 

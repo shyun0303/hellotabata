@@ -1,9 +1,6 @@
-import React,{Component} from "react";
+import React from "react";
 import styled from "styled-components";
 import { TouchableOpacity,StyleSheet } from "react-native";
-import {LinearGradient} from "expo-linear-gradient" 
-import Button from "../Button";
-import { initialState } from "../../reducer";
 
 const View = styled.View`
   justify-content: center;
@@ -16,24 +13,14 @@ const Text = styled.Text`
  
 `;
 
+const SettingNavigation = ({navigation}) =>{
+  return (
+  <View>
+    <TouchableOpacity onPress = {()=>navigation.navigate("SettingPresenter")}>
+      <Text>운동 셋팅</Text>
+    </TouchableOpacity>
+  </View>
+  )
+}
 
-class MuteButton extends Component {
-
-
-  render(){
-
-    const {
-      isMuted,
-      unmuteMusic,
-      muteMusic
-    } = this.props
-    return(
-  <LinearGradient colors={["#F7FFF3","#2ABDEB"]} style={{flex:1}}>
-    <View>
-    {!isMuted && (<Button iconName={"volume-off"} onPress={muteMusic} />)} 
-    {isMuted && (<Button iconName={"volume-up"} onPress={unmuteMusic} />)}
-    </View>
-  </LinearGradient>)
-}}
-
-export default MuteButton;
+export default SettingNavigation

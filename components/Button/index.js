@@ -30,7 +30,7 @@ Button_2.propTypes = {
 };
 
 const styles = StyleSheet.create({
-  container: {
+    container: {
     margin:50,
 
   }

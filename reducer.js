@@ -1,3 +1,5 @@
+import Exercise, { _1roundVar, _2roundVar, _3roundVar, _4roundVar, _5roundVar, _6roundVar, _7roundVar, _8roundVar } from "./components/Setting/exerciseRoundSetting";
+
 // Imports
 // Actions
 
@@ -8,6 +10,7 @@ const PAUSE_TIMER = "PAUSE_TIMER";
 const RE_TIMER ="RE_TIMER";
 const MUTE_MUSIC = "MUTE_MUSIC";
 const UNMUTE_MUSIC = "UNMUTE_MUSIC";
+const SETTING_EXCERCISE = "SETTING_EXCERCISE";
 // Action Creators
 
 function startTimer() {
@@ -47,6 +50,11 @@ function unmuteMusic(){
     type: UNMUTE_MUSIC
   }
 }
+function settingEx(){
+  return{
+    type: SETTING_EXCERCISE
+  }
+}
 
 // Reducer
 
@@ -56,9 +64,10 @@ export const initialState = {
   isPlaying: false,
   isPaused : false,
   isRestart: false,
-  isMuted:false,
   elapsedTime: 0,
-  timerDuration: TIMER_DURATION
+  timerDuration: TIMER_DURATION,
+  _1round:"h",_2round:"g",_3round:"f",_4round:"e",_5round:"d",_6round:"c",_7round:"b",_8round:"a"
+
 };
 
 function reducer(state = initialState, action) {
@@ -77,12 +86,37 @@ function reducer(state = initialState, action) {
       return applyMuteMusic(state,action);
     case UNMUTE_MUSIC:
       return applyUnMuteMusic(state,action);
+    case SETTING_EXCERCISE:
+      return settingExercise(state,action);
     default:
       return state;
   }
 }
 
 // Reducer Functions
+function settingExercise(state,action){
+  const __1round = _1roundVar
+  const __2round = _2roundVar
+  const __3round = _3roundVar
+  const __4round = _4roundVar
+  const __5round = _5roundVar
+  const __6round = _6roundVar
+  const __7round = _7roundVar
+  const __8round = _8roundVar
+
+  return{
+  ...state,
+  _1round:__1round,
+  _2round:__2round,
+  _3round:__3round,
+  _4round:__4round,
+  _5round:__5round,
+  _6round:__6round,
+  _7round:__7round,
+  _8round:__8round,
+  }
+}
+
 function applyReTimer(state,action){
   return{
     ...state,
@@ -156,7 +190,8 @@ const actionCreators = {
   pauseTimer,
   reTimer,
   muteMusic,
-  unmuteMusic
+  unmuteMusic,
+  settingEx
 };
 export { actionCreators };
 
