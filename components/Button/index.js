@@ -13,7 +13,7 @@ export function Button({ iconName, onPress }) {
 
 export function Button_2({iconName,onPress}){
   return(
-    <TouchableOpacity onPressOut={onPress} style={styles.container}>
+    <TouchableOpacity onPressOut={onPress} style={styles.mutebutton}>
     <Foundation name={iconName} size={40} color="white" />
   </TouchableOpacity>
   )
@@ -31,9 +31,14 @@ Button_2.propTypes = {
 
 const styles = StyleSheet.create({
     container: {
-    margin:50,
-
+    marginLeft:50,
+    marginRight:50,
+  },
+  mutebutton:{
+    marginTop:40,
+    marginRight:300
   }
+
 });
 
 export default Button;

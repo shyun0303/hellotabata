@@ -42,6 +42,30 @@ export const mainTime = (time) =>{
 }
 }
 
+const showExercise = (time,_1round,_2round,_3round,_4round,_5round,_6round,_7round,_8round)=>{
+  var remainSeconds = parseInt(time)
+  if(remainSeconds!=0){
+    if(remainSeconds<=240&&remainSeconds>=220){
+      return(<Text>{_1round}</Text>)
+    }else if(remainSeconds<=210&&remainSeconds>=191){
+      return(<Text>{_2round}</Text>)
+    }else if(remainSeconds<=180&&remainSeconds>=161){
+      return(<Text>{_3round}</Text>)
+    }else if(remainSeconds<=150&&remainSeconds>=131){
+      return(<Text>{_4round}</Text>)
+    }else if(remainSeconds<=120&&remainSeconds>=101){
+      return(<Text>{_5round}</Text>)
+    }else if(remainSeconds<=90&&remainSeconds>=71){
+      return(<Text>{_6round}</Text>)
+    }else if(remainSeconds<=60&&remainSeconds>=41){
+      return(<Text>{_7round}</Text>)
+    }else if(remainSeconds<=30&&remainSeconds>=11){
+      return(<Text>{_8round}</Text>)
+    }
+  }
+  
+}
+
 class Timer extends Component {
   state = {
     currentColor : "#29ABE1"
@@ -51,9 +75,10 @@ class Timer extends Component {
    
     BackHandler.addEventListener('hardwareBackPress',()=>{
   {   
-    this.props.isPlaying=false;
-    this.props.isPaused=false;
-    this.props.isRestart=false;
+    nextProps.isPlaying=false;
+    nextProps.isPaused=false;
+    nextProps.isRestart=false;
+    this.props.elapsedTime=0;
     clearInterval(this.state.interval);
     hellMusicStop() 
   }
@@ -126,11 +151,14 @@ class Timer extends Component {
    
       <View style={[styles.container, {backgroundColor: this.state.currentColor}]}>
         <StatusBar barStyle="light-content" />
+        <View style={styles.upper}>
       {!isMuted && (<Button_2 iconName={"volume-strike"} onPress={muteMusic} />)} 
       {isMuted && (<Button_2 iconName={"volume"} onPress={unmuteMusic} />)}
-        <View style={styles.upper}>
           <Text style={styles.time}>
             {formatTime(timerDuration - elapsedTime)}
+               </Text>
+            <Text style={styles.exercise}>
+               {showExercise(timerDuration-elapsedTime,_1round,_2round,_3round,_4round,_5round,_6round,_7round,_8round)}
                </Text>
           <Text style={styles.timea}>
             {mainTime(timerDuration - elapsedTime)}
@@ -161,34 +189,43 @@ class Timer extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-
-  },
+    flex: 1
+   },
   lower: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "row",
-    paddingLeft: 25,
-    paddingRight: 25
+    
   },
   upper: {
-    flex: 2,
-    justifyContent: "center",
-    alignItems: "center"
+    flex: 6,
+    borderColor:"white",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    
   },
   time: {
+    marginTop:-40,
     color: "white",
-    fontSize: 120,
+    fontSize: 80,
     fontWeight: "100",
-    marginBottom: 100
+    textAlign:"center",
+
+  },
+  exercise:{
+    color: "white",
+    fontSize:30,
+    marginTop:100,
+    marginBottom : 30
   },
   timea:{
     color: "white",
-    fontSize: 100,
+    fontSize: 80,
     fontWeight: "100",
-    alignItems:"center"
-  },
+    marginTop:100,
+    
+    },
 
 });
 
