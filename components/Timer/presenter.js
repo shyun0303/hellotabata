@@ -65,7 +65,9 @@ const showExercise = (time,_1round,_2round,_3round,_4round,_5round,_6round,_7rou
   }
   
 }
-
+const showAudio = ()=>{
+  return(<Text>{this.props.isFemaleAudio}</Text>)
+}
 class Timer extends Component {
   state = {
     currentColor : "#29ABE1"
@@ -75,10 +77,10 @@ class Timer extends Component {
    
     BackHandler.addEventListener('hardwareBackPress',()=>{
   {   
-    nextProps.isPlaying=false;
-    nextProps.isPaused=false;
-    nextProps.isRestart=false;
-    this.props.elapsedTime=0;
+    this.props.isPlaying=false;
+    this.props.isPaused=false;
+    this.props.isRestart=false;
+    this.props.timerDuration=TIMER_DURATION;
     clearInterval(this.state.interval);
     hellMusicStop() 
   }
@@ -88,6 +90,7 @@ class Timer extends Component {
     const currentProps = this.props;
     
  /* play music */
+ if(nextProps.isBgAudio){
     if(nextProps.isRestart&&nextProps.isPlaying&&!nextProps.isPaused){
       hellMusicRepyla()
     }else if(!nextProps.isRestart&&!nextProps.isPlaying&&nextProps.isPaused){
@@ -101,7 +104,7 @@ class Timer extends Component {
       hellMusicMute()
     }else if(nextProps.isMuted==false){
       hellMusicunMute()
-    }
+    }}
  /*--------------------------------------------------*/
     if (!currentProps.isPlaying && nextProps.isPlaying) {
       const timerInterval = setInterval(() => {
@@ -144,13 +147,13 @@ class Timer extends Component {
       muteMusic,
       unmuteMusic,
       _1round,_2round,_3round,_4round,_5round,_6round,_7round,_8round,
+      isFemaleAudio, isMaleAudio,isBgAudio
     } = this.props;
     
        
     return (
    
       <View style={[styles.container, {backgroundColor: this.state.currentColor}]}>
-        <StatusBar barStyle="light-content" />
         <View style={styles.upper}>
       {!isMuted && (<Button_2 iconName={"volume-strike"} onPress={muteMusic} />)} 
       {isMuted && (<Button_2 iconName={"volume"} onPress={unmuteMusic} />)}
@@ -160,6 +163,9 @@ class Timer extends Component {
             <Text style={styles.exercise}>
                {showExercise(timerDuration-elapsedTime,_1round,_2round,_3round,_4round,_5round,_6round,_7round,_8round)}
                </Text>
+            <Text>{!isBgAudio && (<Text>Bgdown</Text>)}</Text>
+            <Text>{!isFemaleAudio && (<Text>Female down</Text>)}</Text>
+            <Text>{!isMaleAudio && (<Text>Male down</Text>)}</Text>
           <Text style={styles.timea}>
             {mainTime(timerDuration - elapsedTime)}
           </Text>

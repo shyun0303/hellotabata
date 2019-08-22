@@ -1,4 +1,5 @@
 import Exercise, { _1roundVar, _2roundVar, _3roundVar, _4roundVar, _5roundVar, _6roundVar, _7roundVar, _8roundVar } from "./components/Setting/exerciseRoundSetting";
+import { _isFemaleAudioVar, _isBgAudioVar, _isMaleAudioVar } from "./components/AudioSet/AudioSetting";
 
 // Imports
 // Actions
@@ -11,7 +12,9 @@ const RE_TIMER ="RE_TIMER";
 const MUTE_MUSIC = "MUTE_MUSIC";
 const UNMUTE_MUSIC = "UNMUTE_MUSIC";
 const SETTING_EXCERCISE = "SETTING_EXCERCISE";
+const SETTING_AUDIO = "SETTING_AUDIO"
 // Action Creators
+
 
 function startTimer() {
   return {
@@ -55,6 +58,11 @@ function settingEx(){
     type: SETTING_EXCERCISE
   }
 }
+function settingAud(){
+  return{
+    type: SETTING_AUDIO
+  }
+}
 
 // Reducer
 
@@ -66,7 +74,8 @@ export const initialState = {
   isRestart: false,
   elapsedTime: 0,
   timerDuration: TIMER_DURATION,
-  _1round:"h",_2round:"g",_3round:"f",_4round:"e",_5round:"d",_6round:"c",_7round:"b",_8round:"a"
+  _1round:"h",_2round:"g",_3round:"f",_4round:"e",_5round:"d",_6round:"c",_7round:"b",_8round:"a",
+  isMaleAudio:true,isFemaleAudio:true,isBgAudio: true
 
 };
 
@@ -88,6 +97,8 @@ function reducer(state = initialState, action) {
       return applyUnMuteMusic(state,action);
     case SETTING_EXCERCISE:
       return settingExercise(state,action);
+    case SETTING_AUDIO:
+      return settingAudio(state,action);
     default:
       return state;
   }
@@ -114,6 +125,18 @@ function settingExercise(state,action){
   _6round:__6round,
   _7round:__7round,
   _8round:__8round,
+  }
+}
+function settingAudio(state, action){
+  const _isFemailAudio=_isFemaleAudioVar
+  const _isMaleAudio=_isMaleAudioVar
+  const _isBgAudio=_isBgAudioVar
+  
+  return{
+    ...state,
+    isFemaleAudio:_isFemailAudio,
+    isMaleAudio:_isMaleAudio,
+    isBgAudio:_isBgAudio
   }
 }
 
@@ -191,7 +214,8 @@ const actionCreators = {
   reTimer,
   muteMusic,
   unmuteMusic,
-  settingEx
+  settingEx,
+  settingAud
 };
 export { actionCreators };
 

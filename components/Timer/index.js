@@ -2,11 +2,10 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actionCreators } from "../../reducer";
 import Timer from "./presenter";
-import Exercise from "../Setting/exerciseRoundSetting";
 
 
 function mapStateToProps(state) {
-  const { isPlaying,isPaused, elapsedTime, timerDuration,isRestart,isMuted, _1round,_2round,_3round,_4round,_5round,_6round,_7round,_8round } = state;
+  const { isPlaying,isPaused, elapsedTime, timerDuration,isRestart,isMuted, _1round,_2round,_3round,_4round,_5round,_6round,_7round,_8round,isFemaleAudio, isMaleAudio,isBgAudio } = state;
   return {
     isPlaying,
     isPaused,
@@ -14,7 +13,7 @@ function mapStateToProps(state) {
     timerDuration,
     isRestart,
     isMuted,
-    _1round,_2round,_3round,_4round,_5round,_6round,_7round,_8round
+    _1round,_2round,_3round,_4round,_5round,_6round,_7round,_8round,isFemaleAudio, isMaleAudio,isBgAudio
   
   };
 }

@@ -3,11 +3,13 @@ import { SectionList, StyleSheet, Text, View, Picker,TouchableOpacity,AsyncStora
 import styled from "styled-components";
 
 const Container = styled.View`
-    justify-content: center;
-    align-items: center;
-    flex: 2;
+    margin-top:50;
+    margin-left:15;
+  
 
 `;
+
+const TextContainer = styled.View``
 export let _1roundVar = null;
 export let _2roundVar = null;
 export let _3roundVar = null;
@@ -63,10 +65,10 @@ class Exercise extends Component{
         <>
         <Container>
             {this.hhhhh}
-        <Text>1라운드 : </Text>
+        <Text style={{fontSize:20}} >✔️ 1라운드</Text>
         <Picker
           selectedValue={this.state.__1round}
-          style={{ height: 50, width: 200 }}
+          style={{ height: 50, width: 200, marginLeft:100 }}
           onValueChange={(itemValue, itemIndex) => this.setState({ __1round: itemValue })}>
         <Picker.Item label="a" value="a" />
         <Picker.Item label="b" value="b" />
@@ -84,10 +86,10 @@ class Exercise extends Component{
         <Picker.Item label="n" value="n" />
         </Picker>
        
-        <Text>2라운드 : </Text>
+        <Text style={{fontSize:20}}>✔️ 2라운드</Text>
         <Picker
           selectedValue={this.state.__2round}
-          style={{ height: 50, width: 200 }}
+          style={{ height: 50, width: 200, marginLeft:100 }}
           onValueChange={(itemValue, itemIndex) => this.setState({ __2round: itemValue })}>
          <Picker.Item label="a" value="a" />
         <Picker.Item label="b" value="b" />
@@ -104,10 +106,10 @@ class Exercise extends Component{
         <Picker.Item label="m" value="m" />
         <Picker.Item label="n" value="n" />
         </Picker>
-        <Text>3라운드 : </Text>
+        <Text style={{fontSize:20}}>✔️ 3라운드</Text>
         <Picker
           selectedValue={this.state.__3round}
-          style={{ height: 50, width: 200 }}
+          style={{ height: 50, width: 200, marginLeft:100 }}
           onValueChange={(itemValue, itemIndex) => this.setState({ __3round: itemValue })}>
          <Picker.Item label="a" value="a" />
         <Picker.Item label="b" value="b" />
@@ -124,10 +126,10 @@ class Exercise extends Component{
         <Picker.Item label="m" value="m" />
         <Picker.Item label="n" value="n" />
         </Picker>
-        <Text>4라운드 : </Text>
+        <Text style={{fontSize:20}}>✔️ 4라운드</Text>
         <Picker
           selectedValue={this.state.__4round}
-          style={{ height: 50, width: 200 }}
+          style={{ height: 50, width: 200, marginLeft:100 }}
           onValueChange={(itemValue, itemIndex) => this.setState({ __4round: itemValue })}>
          <Picker.Item label="a" value="a" />
         <Picker.Item label="b" value="b" />
@@ -144,10 +146,10 @@ class Exercise extends Component{
         <Picker.Item label="m" value="m" />
         <Picker.Item label="n" value="n" />
         </Picker>
-        <Text>5라운드 : </Text>
+        <Text  style={{fontSize:20}}>✔️ 5라운드</Text>
         <Picker
           selectedValue={this.state.__5round}
-          style={{ height: 50, width: 200 }}
+          style={{ height: 50, width: 200, marginLeft:100 }}
           onValueChange={(itemValue, itemIndex) => this.setState({ __5round: itemValue })}>
          <Picker.Item label="a" value="a" />
         <Picker.Item label="b" value="b" />
@@ -164,10 +166,10 @@ class Exercise extends Component{
         <Picker.Item label="m" value="m" />
         <Picker.Item label="n" value="n" />
         </Picker>
-        <Text>6라운드 : </Text>
+        <Text   style={{fontSize:20}}>✔️ 6라운드</Text>
         <Picker
           selectedValue={this.state.__6round}
-          style={{ height: 50, width: 200 }}
+          style={{ height: 50, width: 200, marginLeft:100 }}
           onValueChange={(itemValue, itemIndex) => this.setState({ __6round: itemValue })}>
          <Picker.Item label="a" value="a" />
         <Picker.Item label="b" value="b" />
@@ -184,10 +186,10 @@ class Exercise extends Component{
         <Picker.Item label="m" value="m" />
         <Picker.Item label="n" value="n" />
         </Picker>
-        <Text>7라운드 : </Text>
+        <Text style={{fontSize:20}}>✔️ 7라운드</Text>
         <Picker
           selectedValue={this.state.__7round}
-          style={{ height: 50, width: 200 }}
+          style={{ height: 50, width: 200 , marginLeft:100}}
           onValueChange={(itemValue, itemIndex) => this.setState({ __7round: itemValue })}>
          <Picker.Item label="a" value="a" />
         <Picker.Item label="b" value="b" />
@@ -204,10 +206,10 @@ class Exercise extends Component{
         <Picker.Item label="m" value="m" />
         <Picker.Item label="n" value="n" />
         </Picker>
-        <Text>8라운드 : </Text>
+        <Text  style={{fontSize:20}}>✔️ 8라운드</Text>
         <Picker
           selectedValue={this.state.__8round}
-          style={{ height: 50, width: 200 }}
+          style={{ height: 50, width: 200 , marginLeft:100}}
           onValueChange={(itemValue, itemIndex) => this.setState({ __8round: itemValue })}>
          <Picker.Item label="a" value="a" />
         <Picker.Item label="b" value="b" />
@@ -226,14 +228,25 @@ class Exercise extends Component{
         </Picker>
 
         </Container>
-        <Container>
+        <TextContainer style={styles.textContainer}>
          <TouchableOpacity onPress = {settingEx}>
-         <Text>aa</Text>
+         <Text style={{marginRight:100, fontSize:20}}>확인</Text>
         </TouchableOpacity>
-        </Container>
+        <TouchableOpacity onPress = {()=>{this.setState({ __1round: "h",__2round: "g", __3round: "f",__4round: "e",__5round: "d",__6round: "c",__7round: "b",__8round: "a",})}}>
+         <Text style={{fontSize:20}}>초기화</Text>
+        </TouchableOpacity>
+        </TextContainer>
         </>
     )
         }
 }
+const styles = StyleSheet.create({
+  textContainer : {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "row",
+  }
+})
 
 export default Exercise;

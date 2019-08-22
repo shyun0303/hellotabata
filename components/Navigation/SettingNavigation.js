@@ -19,6 +19,9 @@ const SettingNavigation = ({navigation}) =>{
     <TouchableOpacity onPress = {()=>navigation.navigate("SettingPresenter")}>
       <Text>운동 셋팅</Text>
     </TouchableOpacity>
+    <TouchableOpacity onPress = {()=>navigation.navigate("AudioSettingPresenter")}>
+      <Text>음성 셋팅</Text>
+    </TouchableOpacity>
   </View>
   )
 }

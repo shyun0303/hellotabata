@@ -22,12 +22,7 @@ export default ({navigation})=>{
      <LinearGradient colors={["#F7FFF3","#2ABDEB"]} style={{flex:1}}>
    <View>
 
-        <TouchableOpacity onPress={() => navigation.navigate("SettingNavigation")}>
-        <Text>Setting</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("TimerNavigation")}>
-        <Text>바로가기</Text>
-        </TouchableOpacity>
+    <Text>준비중</Text>
     
     </View>
     </LinearGradient>
