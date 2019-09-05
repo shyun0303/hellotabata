@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity,Image } from "react-native";
 import {LinearGradient} from "expo-linear-gradient" 
 
 
@@ -22,7 +22,7 @@ export default ({navigation})=>{
      <LinearGradient colors={["#F7FFF3","#2ABDEB"]} style={{flex:1}}>
    <View>
 
-    <Text>준비중</Text>
+   <Image source = {require("../img/buf.gif")} style={{borderWidth:5,width:150, height:300,}} />
     
     </View>
     </LinearGradient>

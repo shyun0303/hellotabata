@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, StyleSheet, Text, StatusBar, BackHandler } from "react-native";
+import { View, StyleSheet, Text, StatusBar, BackHandler,Image } from "react-native";
 import Button, { Button_2 } from "../Button";
 import {TIMER_DURATION} from  "../../reducer";
 import { hellMusic, hellMusicPlay, hellMusicStop, hellMusicPause, hellMusicRepyla, hellMusicLoad, hellMusicMute, hellMusicunMute } from "../Audio/audio";
@@ -64,6 +64,12 @@ const showExercise = (time,_1round,_2round,_3round,_4round,_5round,_6round,_7rou
     }
   }
   
+}
+
+const buffyTest = ()=>{
+  return(
+    <Image source = {require("../img/buf1.png")} />
+  )
 }
 const showAudio = ()=>{
   return(<Text>{this.props.isFemaleAudio}</Text>)
@@ -161,6 +167,7 @@ class Timer extends Component {
             {formatTime(timerDuration - elapsedTime)}
                </Text>
             <Text style={styles.exercise}>
+               <Image source = {require("../img/buf.gif")} style={{borderWidth:5,width:150, height:300,}} />
                {showExercise(timerDuration-elapsedTime,_1round,_2round,_3round,_4round,_5round,_6round,_7round,_8round)}
                </Text>
             <Text>{!isBgAudio && (<Text>Bgdown</Text>)}</Text>

@@ -5,13 +5,15 @@ import TimerPresenter from "./NavigationPresenter/TimerPresenter";
 import SettingNavigation from "./SettingNavigation";
 import exampleNavigation from "./exampleNavigation";
 import learningEx from "./learningExNavigation";
+import recordNavigation from "./RecordNavigation";
 
 
 export default createBottomTabNavigator({
     타이머 :TimerPresenter,
     운동법 :learningEx,
     세팅 :SettingNavigation,
-    SHOP :exampleNavigation
+    SHOP :exampleNavigation,
+    기록 : recordNavigation
         
 }, {
     defaultNavigationOptions: ({ navigation }) => ({

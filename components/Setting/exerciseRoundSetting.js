@@ -29,7 +29,23 @@ class Exercise extends Component{
        __5round:this.props._5round,
        __6round:this.props._6round,
        __7round:this.props._7round,
-       __8round:this.props._8round                 
+       __8round:this.props._8round,
+       exerciseData:[
+         {name : "a"},
+         {name : "b"},
+         {name : "c"},
+         {name : "d"},
+         {name : "e"},
+         {name : "f"},
+         {name : "g"},
+         {name : "h"},
+         {name : "i"},
+         {name : "j"},
+         {name : "k"},
+         {name : "l"},
+         {name : "m"},
+         {name : "n"},
+       ]                 
     }
    
     helll = () =>{
@@ -69,21 +85,12 @@ class Exercise extends Component{
         <Picker
           selectedValue={this.state.__1round}
           style={{ height: 50, width: 200, marginLeft:100 }}
-          onValueChange={(itemValue, itemIndex) => this.setState({ __1round: itemValue })}>
-        <Picker.Item label="a" value="a" />
-        <Picker.Item label="b" value="b" />
-        <Picker.Item label="c" value="c" />
-        <Picker.Item label="d" value="d" />
-        <Picker.Item label="e" value="e" />
-        <Picker.Item label="f" value="f" />
-        <Picker.Item label="g" value="g" />
-        <Picker.Item label="h" value="h" />
-        <Picker.Item label="i" value="i" />
-        <Picker.Item label="j" value="j" />
-        <Picker.Item label="k" value="k" />
-        <Picker.Item label="l" value="l" />
-        <Picker.Item label="m" value="m" />
-        <Picker.Item label="n" value="n" />
+          onValueChange={(itemValue, itemIndex) => this.setState({ __1round: itemValue })}>{
+            this.state.exerciseData.map((v,i)=>{
+              return <Picker.Item label={v.name} value ={v.name} key={i}/>
+            })
+          }
+          
         </Picker>
        
         <Text style={{fontSize:20}}>✔️ 2라운드</Text>
@@ -91,140 +98,77 @@ class Exercise extends Component{
           selectedValue={this.state.__2round}
           style={{ height: 50, width: 200, marginLeft:100 }}
           onValueChange={(itemValue, itemIndex) => this.setState({ __2round: itemValue })}>
-         <Picker.Item label="a" value="a" />
-        <Picker.Item label="b" value="b" />
-        <Picker.Item label="c" value="c" />
-        <Picker.Item label="d" value="d" />
-        <Picker.Item label="e" value="e" />
-        <Picker.Item label="f" value="f" />
-        <Picker.Item label="g" value="g" />
-        <Picker.Item label="h" value="h" />
-        <Picker.Item label="i" value="i" />
-        <Picker.Item label="j" value="j" />
-        <Picker.Item label="k" value="k" />
-        <Picker.Item label="l" value="l" />
-        <Picker.Item label="m" value="m" />
-        <Picker.Item label="n" value="n" />
+          {
+            this.state.exerciseData.map((v,i)=>{
+              return <Picker.Item label={v.name} value ={v.name} key={i}/>
+            })
+          }
         </Picker>
         <Text style={{fontSize:20}}>✔️ 3라운드</Text>
         <Picker
           selectedValue={this.state.__3round}
           style={{ height: 50, width: 200, marginLeft:100 }}
           onValueChange={(itemValue, itemIndex) => this.setState({ __3round: itemValue })}>
-         <Picker.Item label="a" value="a" />
-        <Picker.Item label="b" value="b" />
-        <Picker.Item label="c" value="c" />
-        <Picker.Item label="d" value="d" />
-        <Picker.Item label="e" value="e" />
-        <Picker.Item label="f" value="f" />
-        <Picker.Item label="g" value="g" />
-        <Picker.Item label="h" value="h" />
-        <Picker.Item label="i" value="i" />
-        <Picker.Item label="j" value="j" />
-        <Picker.Item label="k" value="k" />
-        <Picker.Item label="l" value="l" />
-        <Picker.Item label="m" value="m" />
-        <Picker.Item label="n" value="n" />
+          {
+            this.state.exerciseData.map((v,i)=>{
+              return <Picker.Item label={v.name} value ={v.name} key={i}/>
+            })
+          }
         </Picker>
         <Text style={{fontSize:20}}>✔️ 4라운드</Text>
         <Picker
           selectedValue={this.state.__4round}
           style={{ height: 50, width: 200, marginLeft:100 }}
           onValueChange={(itemValue, itemIndex) => this.setState({ __4round: itemValue })}>
-         <Picker.Item label="a" value="a" />
-        <Picker.Item label="b" value="b" />
-        <Picker.Item label="c" value="c" />
-        <Picker.Item label="d" value="d" />
-        <Picker.Item label="e" value="e" />
-        <Picker.Item label="f" value="f" />
-        <Picker.Item label="g" value="g" />
-        <Picker.Item label="h" value="h" />
-        <Picker.Item label="i" value="i" />
-        <Picker.Item label="j" value="j" />
-        <Picker.Item label="k" value="k" />
-        <Picker.Item label="l" value="l" />
-        <Picker.Item label="m" value="m" />
-        <Picker.Item label="n" value="n" />
+            {
+            this.state.exerciseData.map((v,i)=>{
+              return <Picker.Item label={v.name} value ={v.name} key={i}/>
+            })
+          }
         </Picker>
         <Text  style={{fontSize:20}}>✔️ 5라운드</Text>
         <Picker
           selectedValue={this.state.__5round}
           style={{ height: 50, width: 200, marginLeft:100 }}
           onValueChange={(itemValue, itemIndex) => this.setState({ __5round: itemValue })}>
-         <Picker.Item label="a" value="a" />
-        <Picker.Item label="b" value="b" />
-        <Picker.Item label="c" value="c" />
-        <Picker.Item label="d" value="d" />
-        <Picker.Item label="e" value="e" />
-        <Picker.Item label="f" value="f" />
-        <Picker.Item label="g" value="g" />
-        <Picker.Item label="h" value="h" />
-        <Picker.Item label="i" value="i" />
-        <Picker.Item label="j" value="j" />
-        <Picker.Item label="k" value="k" />
-        <Picker.Item label="l" value="l" />
-        <Picker.Item label="m" value="m" />
-        <Picker.Item label="n" value="n" />
+          {
+            this.state.exerciseData.map((v,i)=>{
+              return <Picker.Item label={v.name} value ={v.name} key={i}/>
+            })
+          }
         </Picker>
         <Text   style={{fontSize:20}}>✔️ 6라운드</Text>
         <Picker
           selectedValue={this.state.__6round}
           style={{ height: 50, width: 200, marginLeft:100 }}
           onValueChange={(itemValue, itemIndex) => this.setState({ __6round: itemValue })}>
-         <Picker.Item label="a" value="a" />
-        <Picker.Item label="b" value="b" />
-        <Picker.Item label="c" value="c" />
-        <Picker.Item label="d" value="d" />
-        <Picker.Item label="e" value="e" />
-        <Picker.Item label="f" value="f" />
-        <Picker.Item label="g" value="g" />
-        <Picker.Item label="h" value="h" />
-        <Picker.Item label="i" value="i" />
-        <Picker.Item label="j" value="j" />
-        <Picker.Item label="k" value="k" />
-        <Picker.Item label="l" value="l" />
-        <Picker.Item label="m" value="m" />
-        <Picker.Item label="n" value="n" />
+           {
+            this.state.exerciseData.map((v,i)=>{
+              return <Picker.Item label={v.name} value ={v.name} key={i}/>
+            })
+          }
         </Picker>
         <Text style={{fontSize:20}}>✔️ 7라운드</Text>
         <Picker
           selectedValue={this.state.__7round}
           style={{ height: 50, width: 200 , marginLeft:100}}
           onValueChange={(itemValue, itemIndex) => this.setState({ __7round: itemValue })}>
-         <Picker.Item label="a" value="a" />
-        <Picker.Item label="b" value="b" />
-        <Picker.Item label="c" value="c" />
-        <Picker.Item label="d" value="d" />
-        <Picker.Item label="e" value="e" />
-        <Picker.Item label="f" value="f" />
-        <Picker.Item label="g" value="g" />
-        <Picker.Item label="h" value="h" />
-        <Picker.Item label="i" value="i" />
-        <Picker.Item label="j" value="j" />
-        <Picker.Item label="k" value="k" />
-        <Picker.Item label="l" value="l" />
-        <Picker.Item label="m" value="m" />
-        <Picker.Item label="n" value="n" />
+       {
+            this.state.exerciseData.map((v,i)=>{
+              return <Picker.Item label={v.name} value ={v.name} key={i}/>
+            })
+          }
         </Picker>
         <Text  style={{fontSize:20}}>✔️ 8라운드</Text>
         <Picker
           selectedValue={this.state.__8round}
           style={{ height: 50, width: 200 , marginLeft:100}}
           onValueChange={(itemValue, itemIndex) => this.setState({ __8round: itemValue })}>
-         <Picker.Item label="a" value="a" />
-        <Picker.Item label="b" value="b" />
-        <Picker.Item label="c" value="c" />
-        <Picker.Item label="d" value="d" />
-        <Picker.Item label="e" value="e" />
-        <Picker.Item label="f" value="f" />
-        <Picker.Item label="g" value="g" />
-        <Picker.Item label="h" value="h" />
-        <Picker.Item label="i" value="i" />
-        <Picker.Item label="j" value="j" />
-        <Picker.Item label="k" value="k" />
-        <Picker.Item label="l" value="l" />
-        <Picker.Item label="m" value="m" />
-        <Picker.Item label="n" value="n" />
+     {
+            this.state.exerciseData.map((v,i)=>{
+              return <Picker.Item label={v.name} value ={v.name} key={i}/>
+            })
+          }
         </Picker>
 
         </Container>

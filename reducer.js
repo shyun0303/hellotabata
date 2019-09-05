@@ -13,6 +13,7 @@ const MUTE_MUSIC = "MUTE_MUSIC";
 const UNMUTE_MUSIC = "UNMUTE_MUSIC";
 const SETTING_EXCERCISE = "SETTING_EXCERCISE";
 const SETTING_AUDIO = "SETTING_AUDIO"
+const SET_RECORD = "SET_RECORD"
 // Action Creators
 
 
@@ -64,6 +65,7 @@ function settingAud(){
   }
 }
 
+
 // Reducer
 
 export const TIMER_DURATION = 250;
@@ -105,6 +107,8 @@ function reducer(state = initialState, action) {
 }
 
 // Reducer Functions
+
+
 function settingExercise(state,action){
   const __1round = _1roundVar
   const __2round = _2roundVar
@@ -215,7 +219,8 @@ const actionCreators = {
   muteMusic,
   unmuteMusic,
   settingEx,
-  settingAud
+  settingAud,
+
 };
 export { actionCreators };
 

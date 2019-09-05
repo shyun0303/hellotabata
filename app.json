@@ -24,10 +24,16 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "no",
+      "publishBundlePath": "ios/hellotabata/Supporting/shell-app.bundle",
+      "publishManifestPath": "ios/hellotabata/Supporting/shell-app-manifest.json"
     },
     "android": {
-      "package": "com.sdfd.sdfxzxa"
+      "package": "com.sdfd.sdfxzxa",
+      "publishBundlePath": "android/app/src/main/assets/shell-app.bundle",
+      "publishManifestPath": "android/app/src/main/assets/shell-app-manifest.json"
     }
+
   }
 }
