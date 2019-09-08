@@ -167,7 +167,7 @@ class Timer extends Component {
             {formatTime(timerDuration - elapsedTime)}
                </Text>
             <Text style={styles.exercise}>
-               <Image source = {require("../img/buf.gif")} style={{borderWidth:5,width:150, height:300,}} />
+               <Image source = {require("../img/buf.gif")} style={{width:150, height:300,}} />
                {showExercise(timerDuration-elapsedTime,_1round,_2round,_3round,_4round,_5round,_6round,_7round,_8round)}
                </Text>
             <Text>{!isBgAudio && (<Text>Bgdown</Text>)}</Text>
