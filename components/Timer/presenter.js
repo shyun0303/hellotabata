@@ -42,11 +42,16 @@ export const mainTime = (time) =>{
 }
 }
 
+
 const showExercise = (time,_1round,_2round,_3round,_4round,_5round,_6round,_7round,_8round)=>{
   var remainSeconds = parseInt(time)
   if(remainSeconds!=0){
-    if(remainSeconds<=240&&remainSeconds>=220){
-      return(<Text>{_1round}</Text>)
+    if(remainSeconds<=240&&remainSeconds>=222){
+      switch(_1round){
+        case "h":
+          return(<Image source = {require("../img/buf.gif")} style={{width:150, height:300,}}/>)
+      }
+      
     }else if(remainSeconds<=210&&remainSeconds>=191){
       return(<Text>{_2round}</Text>)
     }else if(remainSeconds<=180&&remainSeconds>=161){
@@ -167,7 +172,7 @@ class Timer extends Component {
             {formatTime(timerDuration - elapsedTime)}
                </Text>
             <Text style={styles.exercise}>
-               <Image source = {require("../img/buf.gif")} style={{width:150, height:300,}} />
+             
                {showExercise(timerDuration-elapsedTime,_1round,_2round,_3round,_4round,_5round,_6round,_7round,_8round)}
                </Text>
             <Text>{!isBgAudio && (<Text>Bgdown</Text>)}</Text>

@@ -10,7 +10,6 @@ const View = styled.View`
     padding : 100px 100px;
     flex:1;
 `;
-
 const Text = styled.Text`
 
 `;
