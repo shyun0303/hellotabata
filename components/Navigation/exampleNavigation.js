@@ -5,10 +5,8 @@ import {LinearGradient} from "expo-linear-gradient"
 
 
 const View = styled.View`
-    justify-content: flex-start;
-    align-items: flex-end;
-    padding : 100px 100px;
-    flex:1;
+
+  align-items : center;
 `;
 const Text = styled.Text`
 
@@ -21,7 +19,6 @@ export default ({navigation})=>{
      <LinearGradient colors={["#F7FFF3","#2ABDEB"]} style={{flex:1}}>
    <View>
 
-   <Image source = {require("../img/buf.gif")} style={{borderWidth:5,width:150, height:300,}} />
     
     </View>
     </LinearGradient>

@@ -35,8 +35,8 @@ const styles = StyleSheet.create({
     marginRight:50,
   },
   mutebutton:{
-    marginTop:40,
-    marginRight:300
+    marginTop:15,
+    marginLeft:15
   }
 
 });

@@ -13,7 +13,7 @@ export default createBottomTabNavigator({
     운동법 :learningEx,
     세팅 :SettingNavigation,
     SHOP :exampleNavigation,
-    기록 : recordNavigation
+    //기록 : recordNavigation
         
 }, {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -31,7 +31,6 @@ export default createBottomTabNavigator({
             iconName = `ios-cart`;
           }
   
-          // You can return any component that you like here!
           return <IconComponent name={iconName} size={25} color={tintColor} />;
       },
     })}

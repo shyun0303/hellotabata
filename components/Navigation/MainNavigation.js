@@ -6,6 +6,7 @@ import SettingPresenter from "./NavigationPresenter/SettingPresenter";
 import TabNavigation from "./TabNavigation";
 import learningEx from "./learningExNavigation";
 import AudioSettingPresenter from "./NavigationPresenter/AudioSettingPresenter";
+import Exercise from "../Setting/exerciseRoundSetting";
 
 const MainNavigation = createStackNavigator({
     TabNavigation,
@@ -14,7 +15,8 @@ const MainNavigation = createStackNavigator({
     TimerPresenter,
     SettingNavigation,
     learningEx,
-    AudioSettingPresenter
+    AudioSettingPresenter,
+    Exercise
 },{
     headerMode:"none"
 })

@@ -1,10 +1,39 @@
 import React, { Component } from "react";
-import { View, StyleSheet, Text, StatusBar, BackHandler,Image } from "react-native";
+import { View, StyleSheet, Text, StatusBar, BackHandler,Image,TouchableOpacity } from "react-native";
 import Button, { Button_2 } from "../Button";
 import {TIMER_DURATION} from  "../../reducer";
-import { hellMusic, hellMusicPlay, hellMusicStop, hellMusicPause, hellMusicRepyla, hellMusicLoad, hellMusicMute, hellMusicunMute } from "../Audio/audio";
+import { hellMusic, hellMusicPlay, hellMusicStop, hellMusicPause, hellMusicRepyla, hellMusicLoad, hellMusicMute, hellMusicunMute, } from "../Audio/audio";
+import styled from "styled-components";
 
 
+const Container = styled.View`
+height : 100%;
+
+`
+const IphoneHeader = styled.View`
+height : 3.5%;
+
+`
+const MuteButtonContainer = styled.View`
+height : 8%;
+
+`
+const MainTimeContainer = styled.View`
+height : 13%;
+
+`
+const ExerciseContainer = styled.View`
+height : 50%;
+align-items:center;
+`
+const SubTimeContainer = styled.View`
+height : 13%;
+
+`;
+const PlayButtonContainer = styled.View`
+height : 13%;
+
+`;
 
 function formatTime(time) {
   var minutes = Math.floor(time / 60);
@@ -49,7 +78,7 @@ const showExercise = (time,_1round,_2round,_3round,_4round,_5round,_6round,_7rou
     if(remainSeconds<=240&&remainSeconds>=222){
       switch(_1round){
         case "h":
-          return(<Image source = {require("../img/buf.gif")} style={{width:150, height:300,}}/>)
+          return(<Image source = {require("../img/buf.gif")} style={{width:150, height:300}}/>)
       }
       
     }else if(remainSeconds<=210&&remainSeconds>=191){
@@ -71,18 +100,29 @@ const showExercise = (time,_1round,_2round,_3round,_4round,_5round,_6round,_7rou
   
 }
 
-const buffyTest = ()=>{
-  return(
-    <Image source = {require("../img/buf1.png")} />
-  )
-}
-const showAudio = ()=>{
-  return(<Text>{this.props.isFemaleAudio}</Text>)
-}
 class Timer extends Component {
   state = {
-    currentColor : "#29ABE1"
-  }
+    currentColor : "#29ABE1",
+    records:[]
+  }  
+
+addRecord = (timerecord) =>{
+ const newRecord = {
+     시간 : Date.now(),
+     운동시간 : `${timerecord} 초`,
+     소모칼로리 :`${timerecord} Kcal 소모`
+ }
+ 
+ this.setState(prevState=>({
+     records:[
+         newRecord,
+         ...prevState.records
+     ]
+ }));
+ console.log(this.state.records)
+}
+
+
 
   componentWillReceiveProps(nextProps) {
    
@@ -115,7 +155,9 @@ class Timer extends Component {
       hellMusicMute()
     }else if(nextProps.isMuted==false){
       hellMusicunMute()
-    }}
+    }}else {
+      hellMusicStop()
+    }
  /*--------------------------------------------------*/
     if (!currentProps.isPlaying && nextProps.isPlaying) {
       const timerInterval = setInterval(() => {
@@ -163,28 +205,31 @@ class Timer extends Component {
     
        
     return (
-   
-      <View style={[styles.container, {backgroundColor: this.state.currentColor}]}>
-        <View style={styles.upper}>
+   <Container style = {{backgroundColor: this.state.currentColor}}>
+      <IphoneHeader/>
+
+     <MuteButtonContainer>
       {!isMuted && (<Button_2 iconName={"volume-strike"} onPress={muteMusic} />)} 
       {isMuted && (<Button_2 iconName={"volume"} onPress={unmuteMusic} />)}
-          <Text style={styles.time}>
+      </MuteButtonContainer>
+      <MainTimeContainer>
+          <Text style = {styles.time}>
             {formatTime(timerDuration - elapsedTime)}
                </Text>
-            <Text style={styles.exercise}>
-             
-               {showExercise(timerDuration-elapsedTime,_1round,_2round,_3round,_4round,_5round,_6round,_7round,_8round)}
-               </Text>
-            <Text>{!isBgAudio && (<Text>Bgdown</Text>)}</Text>
-            <Text>{!isFemaleAudio && (<Text>Female down</Text>)}</Text>
-            <Text>{!isMaleAudio && (<Text>Male down</Text>)}</Text>
-          <Text style={styles.timea}>
+      </MainTimeContainer>
+           <ExerciseContainer>
+           
+                  {showExercise(timerDuration-elapsedTime,_1round,_2round,_3round,_4round,_5round,_6round,_7round,_8round)}
+            
+             </ExerciseContainer>
+        <SubTimeContainer>
+          <Text style={styles.time}>
             {mainTime(timerDuration - elapsedTime)}
           </Text>
-        </View>
-        <View style={styles.lower}>
+        </SubTimeContainer>
+      <PlayButtonContainer style = {styles.lower}>
           {!isPlaying && !isPaused && !isRestart&&(
-            <Button iconName={"play-circle"} onPress={startTimer} />
+            <Button iconName={"play-circle"} onPress={()=>{this.props.startTimer()}} />
           )}
           {isPlaying && (
             <Button iconName={"stop-circle"} onPress={restartTimer} />
@@ -195,9 +240,10 @@ class Timer extends Component {
           {!isPlaying && isPaused && (
             <Button  iconName={"play-circle"} onPress={reTimer} />
           )} 
-                
-        </View>
-      </View>
+      </PlayButtonContainer>          
+      
+    
+      </Container>
     );
  
   }
@@ -224,8 +270,7 @@ const styles = StyleSheet.create({
     
   },
   time: {
-    marginTop:-40,
-    color: "white",
+    color:"white",
     fontSize: 80,
     fontWeight: "100",
     textAlign:"center",
@@ -237,13 +282,7 @@ const styles = StyleSheet.create({
     marginTop:100,
     marginBottom : 30
   },
-  timea:{
-    color: "white",
-    fontSize: 80,
-    fontWeight: "100",
-    marginTop:100,
-    
-    },
+
 
 });
 

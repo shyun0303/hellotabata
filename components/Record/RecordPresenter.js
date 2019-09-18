@@ -1,48 +1,52 @@
-import React,{Component} from "react";
-import styled from "styled-components";
-import { TouchableOpacity,StyleSheet } from "react-native";
-import Body from "../recordComponents/Body";
-import Header from "../recordComponents/Header";
+// import React,{Component} from "react";
+// import styled from "styled-components";
+// import { TouchableOpacity,StyleSheet,ScrollView,Text,View } from "react-native";
 
 
-const View = styled.View`
- 
-`;
-const Text = styled.Text``;
 
-class Record extends Component{
-   state={
-       records:[]
-   }
-   addRecord = () =>{
-    const newRecord = {
-        nowTime: Date.now(),
-        exerciseTime : `${this.props.elapsedTime} 초`,
-        kCal:`${this.props.elapsedTime*7} Kcal 소모`
-    }
-     return(
-         <View>
-         <Text>{newRecord}</Text>
-         </View>
-     )
- }
+// const IphoneHeader = styled.View`
+//     height:3.5%;
+// `
 
-   
-    render(){
-        const {
-            isPlaying,
-            elapsedTime,
+// const addRecord = (time,isplaying,isrestart,ispaused) => {
+//      const newRecord ={
+//          date: Date.now(),
+//          reco: time,
+//          kcal: time*0.2,
+//      }
+  
+//      {
+//          return(
+//              <View style={{alignItems:"center"}}><Text>{}</Text></View>
+//          )
+//         }
+// }
+  
+// class Record extends Component{
+//     state = {
+//         records:[],
+//     }
+  
+//     render(){
+//         const {
+//             isPlaying,
+//             elapsedTime,
+//             isRestart,
+//             isPaused
 
-        }=this.props;
+//         }=this.props;
         
-        return(
-            <View>
-       
-            </View>
+//         return(
+//         <View>
+//             <IphoneHeader/>
+//          <ScrollView>
+//              <View >{addRecord(elapsedTime,isPlaying,isRestart,isPaused)}</View>
+//          </ScrollView>
+//          </View>
                 
                            
-        )
-    }
-}
+//         )
+//     }
+// }
 
-export default Record
+// export default Record

@@ -2,15 +2,17 @@ import React, { Component } from 'react';
 import { SectionList, StyleSheet, Text, View, Picker,TouchableOpacity,AsyncStorage } from 'react-native';
 import {Checkbox} from "react-native-paper";
 import styled from "styled-components";
+import {withNavigation} from "react-navigation"
+
 
 const Container = styled.View`
   flex:1;
   justify-content:center;
   align-items:center;
 `;
-export let _isFemaleAudioVar= null;
-export let _isMaleAudioVar= null;
-export let _isBgAudioVar= null;
+export var _isFemaleAudioVar= null;
+export var _isMaleAudioVar= null;
+export var _isBgAudioVar= null;
 
 
 class AudioSetting extends Component{
@@ -38,7 +40,7 @@ class AudioSetting extends Component{
        
         const { __isFemaleAudio,__isMaleAudio,__isBgAudio} = this.state;
 
-        console.log(this.props.isFemaleAudio,this.props.isMaleAudio,this.props.isBgAudio)
+        console.log(isFemaleAudio,isMaleAudio,isBgAudio)
 
         return (
           <Container>
@@ -57,10 +59,10 @@ class AudioSetting extends Component{
             status={__isBgAudio ? 'checked' : 'unchecked'}
             onPress={() => { this.setState({ __isBgAudio: !__isBgAudio }); }}
           />
-          <TouchableOpacity onPress={settingAud}><Text>확인</Text></TouchableOpacity>
+          <TouchableOpacity onPress={()=>{this.props.settingAud();this.props.navigation.goBack()}}><Text>확인</Text></TouchableOpacity>
           </Container>
         );
       }
 }
 
-export default AudioSetting
+export default withNavigation(AudioSetting)

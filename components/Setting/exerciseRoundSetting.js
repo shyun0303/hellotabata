@@ -1,59 +1,63 @@
 import React, { Component } from 'react';
 import { SectionList, StyleSheet, Text, View, Picker,TouchableOpacity,AsyncStorage } from 'react-native';
 import styled from "styled-components";
-
+import {withNavigation} from "react-navigation"
 const Container = styled.View`
     margin-top:50;
     margin-left:15;
-  
-
-`;
-
-const TextContainer = styled.View``
-export let _1roundVar = null;
-export let _2roundVar = null;
-export let _3roundVar = null;
-export let _4roundVar = null;
-export let _5roundVar = null;
-export let _6roundVar = null;
-export let _7roundVar = null;
-export let _8roundVar = null;
-
-class Exercise extends Component{
     
-    state={
-       __1round:this.props._1round,
-       __2round:this.props._2round,
-       __3round:this.props._3round,
-       __4round:this.props._4round,
-       __5round:this.props._5round,
-       __6round:this.props._6round,
-       __7round:this.props._7round,
-       __8round:this.props._8round,
-       exerciseData:[
-         {name : "버피 테스트"},
-         {name : "점프 스쿼트"},
-         {name : "마운틴 클라이머"},
-         {name : "하이 니즈"},
-         {name : "e"},
-         {name : "f"},
-         {name : "g"},
-         {name : "h"},
-         {name : "i"},
-         {name : "j"},
-         {name : "k"},
-         {name : "l"},
-         {name : "m"},
-         {name : "n"},
-       ]                 
-    }
-   
-    helll = () =>{
+    
+    `;
+    
+  
+    const TextContainer = styled.View``
+    export let _1roundVar = null;
+    export let _2roundVar = null;
+    export let _3roundVar = null;
+    export let _4roundVar = null;
+    export let _5roundVar = null;
+    export let _6roundVar = null;
+    export let _7roundVar = null;
+    export let _8roundVar = null;
+    
+class Exercise extends Component{
+      
+      
+      
+      state={
+        __1round:this.props._1round,
+        __2round:this.props._2round,
+        __3round:this.props._3round,
+        __4round:this.props._4round,
+        __5round:this.props._5round,
+        __6round:this.props._6round,
+        __7round:this.props._7round,
+        __8round:this.props._8round,
+        exerciseData:[
+          {name : "버피 테스트"},
+          {name : "점프 스쿼트"},
+          {name : "마운틴 클라이머"},
+          {name : "하이 니즈"},
+          {name : "e"},
+          {name : "f"},
+          {name : "g"},
+          {name : "h"},
+          {name : "i"},
+          {name : "j"},
+          {name : "k"},
+          {name : "l"},
+          {name : "m"},
+          {name : "n"},
+        ]                 
+      }
+      
+      helll = () =>{
         console.log(this.props._1round,this.props._2round,this.props._3round,this.props._4round,this.props._5round,this.props._6round,this.props._7round,this.props._8round)
-    }
+      }
+      
+      
+      render(){
 
- 
-    render(){
         _1roundVar=this.state.__1round
         _2roundVar=this.state.__2round
         _3roundVar=this.state.__3round
@@ -75,6 +79,7 @@ class Exercise extends Component{
             _8round,
             
         }=this.props
+
         console.log(this.props._1round,this.props._2round,this.props._3round,this.props._4round,this.props._5round,this.props._6round,this.props._7round,this.props._8round)
 
     return(
@@ -173,13 +178,14 @@ class Exercise extends Component{
 
         </Container>
         <TextContainer style={styles.textContainer}>
-         <TouchableOpacity onPress = {settingEx}>
+         <TouchableOpacity onPress={()=>{this.props.settingEx();this.props.navigation.goBack()}}>
          <Text style={{marginRight:100, fontSize:20}}>확인</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress = {()=>{this.setState({ __1round: "h",__2round: "g", __3round: "f",__4round: "e",__5round: "d",__6round: "c",__7round: "b",__8round: "a",})}}>
          <Text style={{fontSize:20}}>초기화</Text>
         </TouchableOpacity>
-        </TextContainer>
+
+                </TextContainer>
         </>
     )
         }
@@ -193,4 +199,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default Exercise;
+export default withNavigation(Exercise);
